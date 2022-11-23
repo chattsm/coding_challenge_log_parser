@@ -3,7 +3,7 @@
 require 'json'
 require 'open3'
 
-RSpec.describe 'Calling log_parser' do
+RSpec.describe './log_parser' do
   context 'with valid arguments' do
     it 'gives the correct response' do
       output = `./log_parser spec/fixtures/example.log`

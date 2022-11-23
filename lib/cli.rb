@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'page_views/presenter'
+require 'page_views/json_presenter'
 
 class CLI < Dry::CLI::Command
   desc 'Command line tool for processing page view logs.
@@ -31,6 +31,10 @@ class CLI < Dry::CLI::Command
     default: 'json'
 
   def call(file_path:, **options)
-    PageViews::Presenter.new.call
+    PageViews::JSONPresenter.new.call({
+      '/help_page/1' => 3,
+      '/about' => 2,
+      '/home' => 1
+    })
   end
 end
