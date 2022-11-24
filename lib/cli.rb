@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require 'page_views/json_presenter'
+require 'page_views/processor'
+require 'page_views/presenter'
 
 class CLI < Dry::CLI::Command
   desc 'Command line tool for processing page view logs.
@@ -31,10 +32,15 @@ class CLI < Dry::CLI::Command
     default: 'json'
 
   def call(file_path:, **options)
-    PageViews::JSONPresenter.new.call({
-      '/help_page/1' => 3,
-      '/about' => 2,
-      '/home' => 1
-    })
+    logs = PageViews::Processor.new.call([
+      OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038'),
+      OpenStruct.new(page: '/home', ip_address: '184.123.665.067'),
+      OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
+      OpenStruct.new(page: '/help_page/1', ip_address: '929.398.951.889'),
+      OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
+      OpenStruct.new(page: '/help_page/1', ip_address: '722.247.931.582')
+    ])
+
+    PageViews::Presenter.new.call(logs)
   end
 end

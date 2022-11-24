@@ -2,15 +2,15 @@
 
 require 'json'
 
-require 'page_views/json_presenter'
+require 'page_views/presenter'
 
-RSpec.describe PageViews::JSONPresenter do
+RSpec.describe PageViews::Presenter do
   it 'prints a JSON formatted string' do
-    input = {
-      '/help_page/1' => 3,
-      '/about' => 2,
-      '/home' => 1
-    }
+    input = [
+      OpenStruct.new(page: '/help_page/1', count: 3),
+      OpenStruct.new(page: '/home', count: 1),
+      OpenStruct.new(page: '/about', count: 2)
+    ]
 
     expected_output = JSON.generate({
       'page_views' => {
