@@ -6,7 +6,7 @@ require 'open3'
 RSpec.describe './log_parser' do
   context 'with valid arguments' do
     it 'gives the correct response' do
-      output = `./log_parser spec/fixtures/example.log`
+      output = `./log_parser spec/support/fixtures/example.log`
 
       expect(output).to eq(JSON.generate({
         'page_views' => {
