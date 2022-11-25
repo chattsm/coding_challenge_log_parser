@@ -3,6 +3,7 @@
 require 'source/file'
 require 'processor/factory'
 require 'presenter/factory'
+require 'log_parser'
 
 class CLI < Dry::CLI::Command
   desc 'Command line tool for processing page view logs.
@@ -27,10 +28,10 @@ class CLI < Dry::CLI::Command
     default: 'page_views'
 
   def call(file_path:, **options)
-    source_logs = Source::File.new.call(file_path)
-
-    processed_logs = Processor::Factory.for(options[:output_type]).call(source_logs)
-
-    Presenter::Factory.for(options[:output_type]).call(processed_logs)
+    LogParser.new(
+      source: Source::File.new(file_path),
+      processor: Processor::Factory.for(options[:output_type]),
+      presenter: Presenter::Factory.for(options[:output_type])
+    ).call
   end
 end

@@ -6,7 +6,11 @@ module Source
   class File
     LOG_FORMAT = /^\/[a-zA-Z0-9_\/]+\ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/.freeze
 
-    def call(log_file_path)
+    def initialize(log_file_path)
+      @log_file_path = log_file_path
+    end
+
+    def call
       log_file = ::File.new(log_file_path)
 
       [].tap do |logs|
@@ -23,6 +27,8 @@ module Source
     end
 
     private
+
+    attr_reader :log_file_path
 
     def correct_log_format?(log_entry)
       return true if log_entry.match?(LOG_FORMAT)
