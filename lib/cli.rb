@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'source/file'
-require 'page_views/processor'
-require 'page_views/presenter'
+require 'processor/page_views'
+require 'presenter/page_views'
 
 class CLI < Dry::CLI::Command
   desc 'Command line tool for processing page view logs.
@@ -35,8 +35,8 @@ class CLI < Dry::CLI::Command
   def call(file_path:, **options)
     source_logs = Source::File.new.call(file_path)
 
-    processed_logs = PageViews::Processor.new.call(source_logs)
+    processed_logs = Processor::PageViews.new.call(source_logs)
 
-    PageViews::Presenter.new.call(processed_logs)
+    Presenter::PageViews.new.call(processed_logs)
   end
 end

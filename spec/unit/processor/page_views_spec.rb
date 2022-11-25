@@ -2,9 +2,9 @@
 
 require 'json'
 
-require 'page_views/processor'
+require 'processor/page_views'
 
-RSpec.describe PageViews::Processor do
+RSpec.describe Processor::PageViews do
   subject(:results) { described_class.new.call(logs) }
 
   let(:logs) do

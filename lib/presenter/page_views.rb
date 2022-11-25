@@ -2,8 +2,8 @@
 
 require 'json'
 
-module PageViews
-  class Presenter
+module Presenter
+  class PageViews
     def call(logs)
       logs.then { |logs| sort_descending(logs) }
           .then { |logs| reformat_to_hash(logs) }

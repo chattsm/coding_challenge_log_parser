@@ -2,9 +2,9 @@
 
 require 'json'
 
-require 'page_views/presenter'
+require 'presenter/page_views'
 
-RSpec.describe PageViews::Presenter do
+RSpec.describe Presenter::PageViews do
   it 'prints a JSON formatted string' do
     input = [
       OpenStruct.new(page: '/help_page/1', count: 3),
