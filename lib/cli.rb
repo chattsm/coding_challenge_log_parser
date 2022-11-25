@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'source/file'
-require 'processor/page_views'
-require 'presenter/page_views'
+require 'processor/factory'
+require 'presenter/factory'
 
 class CLI < Dry::CLI::Command
   desc 'Command line tool for processing page view logs.
@@ -26,17 +26,11 @@ class CLI < Dry::CLI::Command
     values: %w[page_views unique_page_views],
     default: 'page_views'
 
-  option :output_format,
-    aliases: %w[f],
-    desc: 'Output format',
-    values: %w[json],
-    default: 'json'
-
   def call(file_path:, **options)
     source_logs = Source::File.new.call(file_path)
 
-    processed_logs = Processor::PageViews.new.call(source_logs)
+    processed_logs = Processor::Factory.for(options[:output_type]).call(source_logs)
 
-    Presenter::PageViews.new.call(processed_logs)
+    Presenter::Factory.for(options[:output_type]).call(processed_logs)
   end
 end

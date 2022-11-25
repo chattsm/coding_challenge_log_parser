@@ -65,7 +65,6 @@ RSpec.describe './log_parser' do
 
       Options:
         --output-type=VALUE, -t VALUE     # Output type: (page_views/unique_page_views), default: "page_views"
-        --output-format=VALUE, -f VALUE   # Output format: (json), default: "json"
         --help, -h                        # Print this help
       OUTPUT
 
