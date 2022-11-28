@@ -19,22 +19,6 @@ RSpec.describe './log_parser' do
     end
   end
 
-  context 'with --output-type=page_views' do
-    it 'gives the correct response' do
-      output = `./log_parser --output-type=page_views spec/support/fixtures/example.log`
-
-      expected_output = {
-        'page_views' => {
-          '/help_page/1' => 3,
-          '/about' => 2,
-          '/home' => 1
-        }
-      }
-
-      expect(output).to eq(generate_json(expected_output))
-    end
-  end
-
   context 'with --output-type=unique_page_views' do
     it 'gives the correct response' do
       output = `./log_parser --output-type=unique_page_views spec/support/fixtures/example.log`
