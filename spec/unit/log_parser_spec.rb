@@ -6,11 +6,11 @@ require 'log_parser'
 
 RSpec.describe LogParser do
   subject(:log_parser) do
-    described_class.new.call(file_path:, output_type:)
+    described_class.new.call(file_path:, aggregator:)
   end
 
   describe 'page_views' do
-    let(:output_type) { 'page_views' }
+    let(:aggregator) { 'page_views' }
 
     context 'when file is not empty' do
       let(:file_path) { 'spec/support/fixtures/example.log' }
@@ -42,7 +42,7 @@ RSpec.describe LogParser do
   end
 
   describe 'unique_page_views' do
-    let(:output_type) { 'unique_page_views' }
+    let(:aggregator) { 'unique_page_views' }
 
     context 'when file is not empty' do
       let(:file_path) { 'spec/support/fixtures/example.log' }

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'processor/page_views'
-require 'processor/unique_page_views'
+require 'aggregator/page_views'
+require 'aggregator/unique_page_views'
 
-module Processor
+module Aggregator
   class For
     def self.call(type)
       {

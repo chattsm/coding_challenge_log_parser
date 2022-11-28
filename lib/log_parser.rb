@@ -3,7 +3,7 @@
 require 'dry/cli'
 
 require 'source/file'
-require 'processor/for'
+require 'aggregator/for'
 require 'presenter/for'
 
 class LogParser < Dry::CLI::Command
@@ -22,17 +22,17 @@ class LogParser < Dry::CLI::Command
            aliases: %w[f],
            desc: 'Path to log file'
 
-  option :output_type,
+  option :aggregator,
          aliases: %w[t],
-         desc: 'Output type',
+         desc: 'Aggregator',
          values: %w[page_views unique_page_views],
          default: 'page_views'
 
   def call(file_path:, **options)
     source = Source::File.new(file_path)
-    processor = Processor::For.call(options[:output_type])
-    presenter = Presenter::For.call(options[:output_type])
+    aggregator = Aggregator::For.call(options[:aggregator])
+    presenter = Presenter::For.call(options[:aggregator])
 
-    presenter.call(processor.call(source.call))
+    presenter.call(aggregator.call(source.call))
   end
 end

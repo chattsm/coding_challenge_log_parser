@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'processor/for'
+require 'aggregator/for'
 
-RSpec.describe Processor::For do
-  subject(:processor) { described_class.call(type) }
+RSpec.describe Aggregator::For do
+  subject(:aggregator) { described_class.call(type) }
 
   describe 'for page_views type' do
     let(:type) { 'page_views' }
 
     it 'returns an instance of the PageViews class' do
-      expect(processor).to be_an_instance_of(Processor::PageViews)
+      expect(aggregator).to be_an_instance_of(Aggregator::PageViews)
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.describe Processor::For do
     let(:type) { 'unique_page_views' }
 
     it 'returns an instance of the UniquePageViews class' do
-      expect(processor).to be_an_instance_of(Processor::UniquePageViews)
+      expect(aggregator).to be_an_instance_of(Aggregator::UniquePageViews)
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe Processor::For do
     let(:type) { 'foobar' }
 
     it 'throws a KeyError' do
-      expect { processor }.to raise_error(KeyError)
+      expect { aggregator }.to raise_error(KeyError)
     end
   end
 end

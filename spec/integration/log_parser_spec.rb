@@ -3,7 +3,7 @@
 require 'open3'
 
 RSpec.describe './log_parser' do
-  context 'with default ---output-type' do
+  context 'with default --aggregator' do
     it 'gives the correct response' do
       output = `./log_parser spec/support/fixtures/example.log`
 
@@ -19,9 +19,9 @@ RSpec.describe './log_parser' do
     end
   end
 
-  context 'with --output-type=unique_page_views' do
+  context 'with --aggregator=unique_page_views' do
     it 'gives the correct response' do
-      output = `./log_parser --output-type=unique_page_views spec/support/fixtures/example.log`
+      output = `./log_parser --aggregator=unique_page_views spec/support/fixtures/example.log`
 
       expected_output = {
         'unique_page_views' => {

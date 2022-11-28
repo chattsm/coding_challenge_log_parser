@@ -2,7 +2,7 @@
 
 require 'page_aggregate'
 
-module Processor
+module Aggregator
   class PageViews
     def call(logs_to_process)
       logs_grouped_by_page = logs_to_process.group_by(&:page)
