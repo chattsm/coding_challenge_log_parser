@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'presenter/factory'
+require 'presenter/for'
 
-RSpec.describe Presenter::Factory do
-  subject(:presenter) { described_class.for(type) }
+RSpec.describe Presenter::For do
+  subject(:presenter) { described_class.call(type) }
 
   describe 'for page_views type' do
     let(:type) { 'page_views' }

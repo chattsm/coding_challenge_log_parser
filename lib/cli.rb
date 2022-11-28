@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'source/file'
-require 'processor/factory'
-require 'presenter/factory'
+require 'processor/for'
+require 'presenter/for'
 require 'log_parser'
 
 class CLI < Dry::CLI::Command
@@ -17,21 +17,21 @@ class CLI < Dry::CLI::Command
     etc'
 
   argument :file_path,
-    required: true,
-    aliases: %w[f],
-    desc: 'Path to log file'
+           required: true,
+           aliases: %w[f],
+           desc: 'Path to log file'
 
   option :output_type,
-    aliases: %w[t],
-    desc: 'Output type',
-    values: %w[page_views unique_page_views],
-    default: 'page_views'
+         aliases: %w[t],
+         desc: 'Output type',
+         values: %w[page_views unique_page_views],
+         default: 'page_views'
 
   def call(file_path:, **options)
     LogParser.new(
       source: Source::File.new(file_path),
-      processor: Processor::Factory.for(options[:output_type]),
-      presenter: Presenter::Factory.for(options[:output_type])
+      processor: Processor::For.call(options[:output_type]),
+      presenter: Presenter::For.call(options[:output_type])
     ).call
   end
 end

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'processor/factory'
+require 'processor/for'
 
-RSpec.describe Processor::Factory do
-  subject(:processor) { described_class.for(type) }
+RSpec.describe Processor::For do
+  subject(:processor) { described_class.call(type) }
 
   describe 'for page_views type' do
     let(:type) { 'page_views' }
