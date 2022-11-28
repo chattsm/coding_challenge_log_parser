@@ -8,4 +8,5 @@ gem 'dry-cli', '~> 1.0'
 
 group :development, :test do
   gem 'rspec'
+  gem 'rubocop-rspec'
 end
