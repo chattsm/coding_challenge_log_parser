@@ -8,10 +8,10 @@ module Presenter
     include Sortable
     include JSONPrintable
 
-    def call(logs_to_present)
-      logs_to_present.then { |logs| sort_descending(logs) }
-                     .then { |logs| reformat_to_hash(logs) }
-                     .then { |logs| print_json(:unique_page_views, logs) }
+    def call(page_aggregates)
+      page_aggregates.then { |aggregates| sort_descending(aggregates) }
+                     .then { |aggregates| reformat_to_hash(aggregates) }
+                     .then { |aggregates| print_json(:unique_page_views, aggregates) }
     end
   end
 end

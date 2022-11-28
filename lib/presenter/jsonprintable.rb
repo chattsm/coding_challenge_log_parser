@@ -6,14 +6,16 @@ module Presenter
   module JSONPrintable
     private
 
-    def reformat_to_hash(logs_to_reformat)
-      logs_to_reformat.inject({}) do |logs_hash_memo, log|
-        logs_hash_memo.tap { |logs_hash| logs_hash[log.page] = log.count }
+    def reformat_to_hash(page_aggregates)
+      page_aggregates.inject({}) do |page_aggregates_hash, page_aggregate|
+        page_aggregates_hash.tap do |hash|
+          hash[page_aggregate.page] = page_aggregate.count
+        end
       end
     end
 
-    def print_json(top_level_name, logs_hash)
-      print JSON.generate({ top_level_name => logs_hash })
+    def print_json(top_level_name, page_aggregates_hash)
+      print JSON.generate({ top_level_name => page_aggregates_hash })
     end
   end
 end
