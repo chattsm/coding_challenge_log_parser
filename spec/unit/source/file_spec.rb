@@ -44,7 +44,7 @@ RSpec.describe Source::File do
     let(:log_file_path) { fixture_path('badly_formatted.log') }
 
     it 'returns only the data that it can parse' do
-      allow($stderr).to receive(:puts)
+      allow(Warning).to receive(:warn)
 
       expected_output = [
         Log.new(page: '/about', ip_address: '444.701.448.104')

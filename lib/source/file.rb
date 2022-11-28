@@ -33,7 +33,7 @@ module Source
     def correct_log_format?(log_entry)
       return true if log_entry.match?(LOG_FORMAT)
 
-      $stderr.puts "Log '#{log_entry.strip}' is in incorrect format"
+      warn "Log '#{log_entry.strip}' is in incorrect format"
 
       false
     end
