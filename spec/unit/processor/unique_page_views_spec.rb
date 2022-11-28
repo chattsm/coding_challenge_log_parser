@@ -19,9 +19,9 @@ RSpec.describe Processor::UniquePageViews do
     ]
 
     expected_output = [
-      OpenStruct.new(page: '/help_page/1', count: 2),
-      OpenStruct.new(page: '/home', count: 1),
-      OpenStruct.new(page: '/about', count: 1)
+      PageAggregate.new(page: '/help_page/1', count: 2),
+      PageAggregate.new(page: '/home', count: 1),
+      PageAggregate.new(page: '/about', count: 1)
     ]
 
     expect(unique_page_views.call(logs)).to eq(expected_output)

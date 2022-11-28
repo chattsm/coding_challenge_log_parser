@@ -16,17 +16,6 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
-Style/OpenStructUse:
-  Exclude:
-    - 'lib/processor/page_views.rb'
-    - 'lib/processor/unique_page_views.rb'
-    - 'lib/source/file.rb'
-    - 'spec/unit/presenter/page_views_spec.rb'
-    - 'spec/unit/presenter/unique_page_views_spec.rb'
-    - 'spec/unit/processor/page_views_spec.rb'
-    - 'spec/unit/processor/unique_page_views_spec.rb'
-    - 'spec/unit/source/file_spec.rb'
-
 Style/HashSyntax:
   Exclude:
     - 'lib/processor/page_views.rb'

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'page_aggregate'
+
 module Processor
   class UniquePageViews
     def call(logs)
@@ -8,7 +10,7 @@ module Processor
       logs_grouped_by_page.map do |page, all_logs|
         unique_log = all_logs.uniq(&:ip_address)
 
-        OpenStruct.new(page: page, count: unique_log.count)
+        PageAggregate.new(page: page, count: unique_log.count)
       end
     end
   end
