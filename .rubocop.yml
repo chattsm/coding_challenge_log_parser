@@ -16,12 +16,6 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
-Style/HashSyntax:
-  Exclude:
-    - 'lib/processor/page_views.rb'
-    - 'lib/processor/unique_page_views.rb'
-    - 'lib/source/file.rb'
-
 Style/StderrPuts:
   Exclude:
     - 'lib/source/file.rb'

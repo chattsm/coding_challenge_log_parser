@@ -19,7 +19,7 @@ module Source
 
           page, ip_address = log_entry.split(/ /)
 
-          logs << Log.new(page: page, ip_address: ip_address.strip)
+          logs << Log.new(page:, ip_address: ip_address.strip)
         end
       end
     ensure

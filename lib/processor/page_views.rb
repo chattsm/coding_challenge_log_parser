@@ -8,7 +8,7 @@ module Processor
       logs_grouped_by_page = logs_to_process.group_by(&:page)
 
       logs_grouped_by_page.map do |page, logs|
-        PageAggregate.new(page: page, count: logs.count)
+        PageAggregate.new(page:, count: logs.count)
       end
     end
   end
