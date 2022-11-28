@@ -4,7 +4,7 @@ require 'ostruct'
 
 module Source
   class File
-    LOG_FORMAT = /^\/[a-zA-Z0-9_\/]+\ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/.freeze
+    LOG_FORMAT = %r{^/[a-zA-Z0-9_/]+\ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$}
 
     def initialize(log_file_path)
       @log_file_path = log_file_path

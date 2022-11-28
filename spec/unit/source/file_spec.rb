@@ -11,14 +11,16 @@ RSpec.describe Source::File do
     let(:log_file_path) { fixture_path('example.log') }
 
     it 'returns the correct results' do
-      expect(parser.call).to eq([
+      expected_output = [
         OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038'),
         OpenStruct.new(page: '/home', ip_address: '184.123.665.067'),
         OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
         OpenStruct.new(page: '/help_page/1', ip_address: '929.398.951.889'),
         OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
         OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038')
-      ])
+      ]
+
+      expect(parser.call).to eq(expected_output)
     end
   end
 
@@ -26,7 +28,6 @@ RSpec.describe Source::File do
     let(:log_file_path) { 'foo/bar.log' }
 
     it 'raises an error' do
-      # TODO: raise own error wrapping SystemCallError
       expect { parser.call }.to raise_error(SystemCallError)
     end
   end
@@ -45,9 +46,11 @@ RSpec.describe Source::File do
     it 'returns only the data that it can parse' do
       allow($stderr).to receive(:puts)
 
-      expect(parser.call).to eq([
+      expected_output = [
         OpenStruct.new(page: '/about', ip_address: '444.701.448.104')
-      ])
+      ]
+
+      expect(parser.call).to eq(expected_output)
     end
 
     it 'prints useful errors to stdout' do

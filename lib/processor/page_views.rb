@@ -2,8 +2,8 @@
 
 module Processor
   class PageViews
-    def call(logs)
-      logs_grouped_by_page = logs.group_by { |log| log.page }
+    def call(logs_to_process)
+      logs_grouped_by_page = logs_to_process.group_by(&:page)
 
       logs_grouped_by_page.map do |page, logs|
         OpenStruct.new(page: page, count: logs.count)

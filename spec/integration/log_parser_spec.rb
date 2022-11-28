@@ -8,13 +8,15 @@ RSpec.describe './log_parser' do
     it 'gives the correct response' do
       output = `./log_parser spec/support/fixtures/example.log`
 
-      expect(output).to eq(JSON.generate({
+      expected_output = {
         'page_views' => {
           '/help_page/1' => 3,
           '/about' => 2,
           '/home' => 1
         }
-      }))
+      }
+
+      expect(output).to eq(generate_json(expected_output))
     end
   end
 
@@ -22,13 +24,15 @@ RSpec.describe './log_parser' do
     it 'gives the correct response' do
       output = `./log_parser --output-type=page_views spec/support/fixtures/example.log`
 
-      expect(output).to eq(JSON.generate({
+      expected_output = {
         'page_views' => {
           '/help_page/1' => 3,
           '/about' => 2,
           '/home' => 1
         }
-      }))
+      }
+
+      expect(output).to eq(generate_json(expected_output))
     end
   end
 
@@ -36,13 +40,15 @@ RSpec.describe './log_parser' do
     it 'gives the correct response' do
       output = `./log_parser --output-type=unique_page_views spec/support/fixtures/example.log`
 
-      expect(output).to eq(JSON.generate({
+      expected_output = {
         'unique_page_views' => {
           '/help_page/1' => 2,
           '/home' => 1,
           '/about' => 1
         }
-      }))
+      }
+
+      expect(output).to eq(generate_json(expected_output))
     end
   end
 

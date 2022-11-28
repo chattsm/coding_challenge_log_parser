@@ -1,0 +1,45 @@
+require: rubocop-rspec
+
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://docs.rubocop.org/rubocop/configuration
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+  Enabled: false
+
+Style/OpenStructUse:
+  Exclude:
+    - 'lib/processor/page_views.rb'
+    - 'lib/processor/unique_page_views.rb'
+    - 'lib/source/file.rb'
+    - 'spec/unit/presenter/page_views_spec.rb'
+    - 'spec/unit/presenter/unique_page_views_spec.rb'
+    - 'spec/unit/processor/page_views_spec.rb'
+    - 'spec/unit/processor/unique_page_views_spec.rb'
+    - 'spec/unit/source/file_spec.rb'
+
+Style/HashSyntax:
+  Exclude:
+    - 'lib/processor/page_views.rb'
+    - 'lib/processor/unique_page_views.rb'
+    - 'lib/source/file.rb'
+
+Style/StderrPuts:
+  Exclude:
+    - 'lib/source/file.rb'
+
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/integration/log_parser_spec.rb'
