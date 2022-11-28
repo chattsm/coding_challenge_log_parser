@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
 require 'open3'
 
 RSpec.describe './log_parser' do

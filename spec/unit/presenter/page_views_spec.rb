@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 require 'page_aggregate'
 require 'presenter/page_views'
 

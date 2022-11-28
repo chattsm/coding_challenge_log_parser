@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 require 'log'
 require 'processor/unique_page_views'
 
