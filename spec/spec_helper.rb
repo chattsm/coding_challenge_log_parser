@@ -10,3 +10,7 @@ end
 def generate_json(hash)
   JSON.generate(hash)
 end
+
+RSpec.configure do |config|
+  config.order = 'random'
+end

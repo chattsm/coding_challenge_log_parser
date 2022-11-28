@@ -2,19 +2,20 @@
 
 require 'json'
 
+require 'log'
 require 'processor/unique_page_views'
 
 RSpec.describe Processor::UniquePageViews do
-  subject(:results) { described_class.new }
+  subject(:unique_page_views) { described_class.new }
 
   it 'returns the correct results' do
     logs = [
-      OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038'),
-      OpenStruct.new(page: '/home', ip_address: '184.123.665.067'),
-      OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
-      OpenStruct.new(page: '/help_page/1', ip_address: '929.398.951.889'),
-      OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
-      OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038')
+      Log.new(page: '/help_page/1', ip_address: '126.318.035.038'),
+      Log.new(page: '/home', ip_address: '184.123.665.067'),
+      Log.new(page: '/about', ip_address: '444.701.448.104'),
+      Log.new(page: '/help_page/1', ip_address: '929.398.951.889'),
+      Log.new(page: '/about', ip_address: '444.701.448.104'),
+      Log.new(page: '/help_page/1', ip_address: '126.318.035.038')
     ]
 
     expected_output = [
@@ -23,6 +24,6 @@ RSpec.describe Processor::UniquePageViews do
       OpenStruct.new(page: '/about', count: 1)
     ]
 
-    expect(results.call(logs)).to eq(expected_output)
+    expect(unique_page_views.call(logs)).to eq(expected_output)
   end
 end

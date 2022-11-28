@@ -12,12 +12,12 @@ RSpec.describe Source::File do
 
     it 'returns the correct results' do
       expected_output = [
-        OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038'),
-        OpenStruct.new(page: '/home', ip_address: '184.123.665.067'),
-        OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
-        OpenStruct.new(page: '/help_page/1', ip_address: '929.398.951.889'),
-        OpenStruct.new(page: '/about', ip_address: '444.701.448.104'),
-        OpenStruct.new(page: '/help_page/1', ip_address: '126.318.035.038')
+        Log.new(page: '/help_page/1', ip_address: '126.318.035.038'),
+        Log.new(page: '/home', ip_address: '184.123.665.067'),
+        Log.new(page: '/about', ip_address: '444.701.448.104'),
+        Log.new(page: '/help_page/1', ip_address: '929.398.951.889'),
+        Log.new(page: '/about', ip_address: '444.701.448.104'),
+        Log.new(page: '/help_page/1', ip_address: '126.318.035.038')
       ]
 
       expect(parser.call).to eq(expected_output)
@@ -47,7 +47,7 @@ RSpec.describe Source::File do
       allow($stderr).to receive(:puts)
 
       expected_output = [
-        OpenStruct.new(page: '/about', ip_address: '444.701.448.104')
+        Log.new(page: '/about', ip_address: '444.701.448.104')
       ]
 
       expect(parser.call).to eq(expected_output)
