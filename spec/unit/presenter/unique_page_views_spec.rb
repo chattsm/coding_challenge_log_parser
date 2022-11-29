@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 require 'page_aggregate'
 require 'presenter/unique_page_views'
 

@@ -11,4 +11,5 @@ group :development, :test do
   gem 'rspec'
   gem 'rubocop-rspec'
   gem 'simplecov', require: false
+  gem 'skunk'
 end
