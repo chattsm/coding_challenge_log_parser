@@ -27,8 +27,18 @@ RSpec.describe Source::File do
   context 'when the log file cannot be found' do
     let(:log_file_path) { 'foo/bar.log' }
 
-    it 'raises an error' do
-      expect { parser.call }.to raise_error(SystemCallError)
+    it 'prints a useful error to stdout' do
+      expect do
+        parser.call
+      rescue SystemExit
+        # Suppress error so other tests can run!
+      end.to output(/Unable to read file/).to_stderr
+    end
+
+    it 'exits with a SystemExit error' do
+      allow(Warning).to receive(:warn)
+
+      expect { parser.call }.to raise_error(SystemExit)
     end
   end
 

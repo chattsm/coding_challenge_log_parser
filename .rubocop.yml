@@ -16,10 +16,6 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
-Style/StderrPuts:
-  Exclude:
-    - 'lib/source/file.rb'
-
 RSpec/ExampleLength:
   Max: 15
 
